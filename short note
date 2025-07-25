@@ -1,0 +1,39 @@
+You are given a number and asked to format it as per Indian currency style, where:
+
+The last 3 digits are grouped together.
+
+Before that, digits are grouped in pairs of 2.
+
+Any decimal part is kept intact.
+
+Example
+Input: 123456.7891
+Indian format: 1,23,456.7891
+(Not like 123,456.7891 which is the Western format)
+
+How the Code Works
+parts = str(number).split('.')
+Splits into integer and decimal parts.
+
+
+int_part = parts[0]
+decimal = '.' + parts[1] if len(parts) > 1 else ''
+Handles the decimal (if present).
+
+
+last_three = int_part[-3:]
+rest = int_part[:-3]
+Keeps last 3 digits separate.
+
+Remaining digits are grouped in 2s using a loop.
+
+
+formatted = ','.join(result) + ',' + last_three
+Adds commas properly as per Indian style.
+
+
+return formatted + decimal
+Returns final formatted number.
+Output
+
+1,23,456.7891
